@@ -1,0 +1,153 @@
+/* ====== ESTILO GERAL ====== */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ====== TABELA ====== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+}
+
+thead {
+    background-color: #007bff;
+    color: #fff;
+}
+
+thead th {
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+tbody td {
+    padding: 10px 12px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.btn-acao {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-right: 5px;
+    transition: background-color 0.2s;
+}
+
+.btn-editar {
+    background-color: #ffc107;
+    color: #fff;
+}
+.btn-editar:hover {
+    background-color: #e0a800;
+}
+
+.btn-remover {
+    background-color: #dc3545;
+    color: #fff;
+}
+.btn-remover:hover {
+    background-color: #c82333;
+}
+
+/* ====== FORMULÁRIO ====== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.4);
+    outline: none;
+}
+
+button, input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.3s;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* ====== ALERTAS / MENSAGENS ====== */
+.alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
