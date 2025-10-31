@@ -210,8 +210,15 @@ const appCorporativa = {
                     parametros.colunas.forEach(col => {
                         const campo = form.querySelector(`[name='${col.dado}']`);
                         if (campo) {
-                            const valor = col.dado.split('.').reduce((obj, chave) => obj && obj[chave], dados);
-                            campo.value = valor ?? "";
+                            if(col.tipo === "relacionamento") {
+                                const valorRel = JSON.stringify(dados[col.dado]);
+                                console.log("Valor relacionamento:", valorRel);
+                                campo.value = valorRel;
+                                return;
+                            } else {
+                                const valor = col.dado.split('.').reduce((obj, chave) => obj && obj[chave], dados);
+                                campo.value = valor ?? "";
+                            }
                         }
                     });
                 }
@@ -227,15 +234,11 @@ const appCorporativa = {
 
             parametros.colunas.forEach(col => {
                 const valor = form.querySelector(`[name='${col.dado}']`).value;
-                if (col.tipo === "relacionamento") {
-                    // Cria objeto aninhado ex: editora: { id: X }
-                    const partes = col.dado.split('.');
-                    if (partes.length > 1) {
-                        obj[partes[0]] = { [partes[1]]: valor };
-                    }
-                } else {
-                    obj[col.dado] = valor;
-                }
+               if(col.tipo === "relacionamento") {
+                   obj[col.dado] = JSON.parse(valor);
+               } else {
+                   obj[col.dado] = valor;
+               }
             });
 
             const metodo = idEdicao ? "PUT" : "POST";
