@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function() {
     let parametros = {
         idFormulario: 'formLivro',
-        colunas: [
+        campos: [
             { titulo: 'ID', dado: 'id', tipo: 'oculto' },
             { titulo: 'Título', dado: 'titulo', tipo: 'textoCurto', obrigatorio: true },
             { titulo: 'Autores', dado: 'autores', tipo: 'textoCurto', obrigatorio: true },
@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         urlCadastrar: 'http://localhost:8080/AppCorporativaMavenWeb/livros',
         urlEditar: 'http://localhost:8080/AppCorporativaMavenWeb/livros',
         urlCargaDados: 'http://localhost:8080/AppCorporativaMavenWeb/livros/id=',
+        token: localStorage.getItem("tokenAppCorporativa"),
     };
     await appCorporativa.criarFormulario(
         parametros

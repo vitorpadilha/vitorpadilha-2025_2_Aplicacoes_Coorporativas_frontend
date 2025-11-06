@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script >
+
+        
+async function trocarCodePorToken() {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+    if (!code) return;
+/*
+    const tokenResponse = await fetch("https://oauth2.googleapis.com/token", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        client_id: "1016403163771-actiqtdtn7vv8sjplc4b1sk3ukns5lbm.apps.googleusercontent.com",
+        client_secret: "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",
+        code: code,
+        grant_type: "authorization_code",
+        redirect_uri: "http://localhost:81/AppCorporativa/public/retorno-autenticacao.html"
+      })
+    });
+    */
+   const params2 = new URLSearchParams();
+    params2.append("code", code);
+   const tokenResponse = await fetch("http://localhost:8080/AppCorporativaMavenWeb/auth/google", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: params2
+    })
+    console.log("Codigo:", code);
+    const tokenData = await tokenResponse.json();
+    console.log("Token recebido:", tokenData);
+
+    // Armazena o token localmente
+    localStorage.setItem("tokenAppCorporativa", tokenData.id_token);
+//localStorage.setItem("tokenAppCorporativa", code);
+    // Redireciona para a página principal
+   window.location.href = "index.html";
+  }
+
+  trocarCodePorToken();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

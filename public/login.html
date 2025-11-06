@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Sistema com OAuth2</title>
+  <style>
+    
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <h2>Entrar no Sistema</h2>
+    <p>Escolha um provedor de login:</p>
+    <button onclick="loginComGoogle()">Login com Google</button>
+    <button onclick="loginComKeycloak()">Login com Keycloak</button>
+    <link rel="stylesheet" href="style-login.css"/>
+  </div>
+
+  <script>
+    // Configurações dos endpoints OAuth2
+    const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
+    const GOOGLE_CLIENT_ID = "1016403163771-actiqtdtn7vv8sjplc4b1sk3ukns5lbm.apps.googleusercontent.com";
+    const REDIRECT_URI = "http://localhost:81/AppCorporativa/public/retorno-autenticacao.html"; // página que vai receber o code
+
+    const KEYCLOAK_AUTH_URL = "http://localhost:8080/realms/meu-reino/protocol/openid-connect/auth";
+    const KEYCLOAK_CLIENT_ID = "frontend-app";
+
+    function loginComGoogle() {
+      const url =
+        `${GOOGLE_AUTH_URL}?client_id=${GOOGLE_CLIENT_ID}` +
+        `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
+        `&response_type=code&scope=openid%20email%20profile`;
+      window.location.href = url;
+    }
+
+    function loginComKeycloak() {
+      const url =
+        `${KEYCLOAK_AUTH_URL}?client_id=${KEYCLOAK_CLIENT_ID}` +
+        `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
+        `&response_type=code&scope=openid`;
+      window.location.href = url;
+    }
+  </script>
+</body>
+</html>
