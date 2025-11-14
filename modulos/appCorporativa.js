@@ -136,7 +136,7 @@ const appCorporativa = {
                 input = document.createElement("select");
                 input.name = col.dado;
                 input.id = col.dado;
-
+                input.value =  col.valorPadrao ? col.valorPadrao : "";
                 const optGenerico = document.createElement("option");
                 optGenerico.value = "";
                 optGenerico.textContent = "Selecione...";
@@ -167,6 +167,8 @@ const appCorporativa = {
                 input = document.createElement("textarea");
                 input.name = col.dado;
                 input.id = col.dado;
+                input.placeholder = col.titulo;
+                input.textContent =  col.valorPadrao ? col.valorPadrao : "";
                 if (col.obrigatorio)
                     input.required = true;
             }
@@ -175,6 +177,7 @@ const appCorporativa = {
                 input.name = col.dado;
                 input.id = col.dado;
                 input.placeholder = col.titulo;
+                input.value =  col.valorPadrao ? col.valorPadrao : "";
                 if (col.obrigatorio)
                     input.required = true;
 

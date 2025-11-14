@@ -34,14 +34,41 @@ async function trocarCodePorToken() {
     console.log("Codigo:", code);
     const tokenData = await tokenResponse.json();
     console.log("Token recebido:", tokenData);
+    const decodedToken = decodeJwt(tokenData.id_token);
+    console.log("Token decodificado:", decodedToken);
 
     // Armazena o token localmente
     localStorage.setItem("tokenAppCorporativa", tokenData.id_token);
 //localStorage.setItem("tokenAppCorporativa", code);
     // Redireciona para a página principal
-   window.location.href = "index.html";
-  }
+   fetch("http://localhost:8080/AppCorporativaMavenWeb/usuarios/pegaPorEmail?email="+decodedToken.email, {
+      method: "GET",
+      headers: {
+        "Authorization": "Bearer " + tokenData.id_token
+      },
+    }).then(response => {
+      console.log("Resposta da verificação do usuário:", response);
+      console.log("Status da resposta:", response.status);
+        if (response.status === 404) {
+          window.location.href = "usuario/formulario.html?email="+decodedToken.email;
+          return null;
+      }
+      return response.json()
+    
+    }).then(usuario => {
+      console.log("Dados do usuário:", usuario);
+        if(usuario === null) return;
+        localStorage.setItem("usuarioAppCorporativa", JSON.stringify(usuario));
+        window.location.href = "index.html";     
 
+    });
+    
+  }
+function decodeJwt(token) {
+    const payload = token.split(".")[1];
+    const decoded = atob(payload.replace(/-/g, "+").replace(/_/g, "/"));
+    return JSON.parse(decoded);
+}
   trocarCodePorToken();
     </script>
 </head>
