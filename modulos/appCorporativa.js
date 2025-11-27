@@ -163,6 +163,30 @@ const appCorporativa = {
                     console.error("Erro ao carregar relacionamento:", e);
                 }
             }
+            if (col.tipo === "selecao") {
+                input = document.createElement("select");
+                input.name = col.dado;
+                input.id = col.dado;
+                input.value =  col.valorPadrao ? col.valorPadrao : "";
+                const optGenerico = document.createElement("option");
+                optGenerico.value = "";
+                optGenerico.textContent = "Selecione...";
+                input.appendChild(optGenerico);
+                if (col.obrigatorio)
+                    input.required = true;
+                // Carrega opções da URL
+                try {
+                    
+                    col.opcoes?.forEach(op => {
+                        const opt = document.createElement("option");
+                        opt.value = op.valor;
+                        opt.textContent = op.texto;
+                        input.appendChild(opt);
+                    });
+                } catch (e) {
+                    console.error("Erro ao carregar relacionamento:", e);
+                }
+            }
             else if(col.tipo === "textarea" || col.tipo === "textoLongo"){
                 input = document.createElement("textarea");
                 input.name = col.dado;

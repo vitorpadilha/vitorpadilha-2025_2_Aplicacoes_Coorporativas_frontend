@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", async function() {
             { titulo: 'ID', dado: 'id', tipo: 'oculto', obrigatorio: false },
             { titulo: 'email', dado: 'email', tipo: 'oculto', obrigatorio: true, valorPadrao: email },
             { titulo: 'Nome', dado: 'nome', tipo: 'textoCurto', obrigatorio: true },
+            { titulo: 'Papel', dado: 'nome', tipo: 'selecao', obrigatorio: true, opcoes: 
+                [
+                    { valor: 'ADMIN', texto: 'ADMIN' },
+                    { valor: 'USER', texto: 'USER' }
+                ]
+             },
         ],
         urlCadastrar: 'http://localhost:8080/AppCorporativaMavenWeb/usuarios',
         urlEditar: 'http://localhost:8080/AppCorporativaMavenWeb/usuarios',
