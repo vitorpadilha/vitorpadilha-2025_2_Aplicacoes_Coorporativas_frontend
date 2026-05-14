@@ -98,22 +98,37 @@ label {
     font-weight: 600;
     margin-bottom: 4px;
 }
+input,
+select,
+textarea {
 
-input[type="text"],
-input[type="number"],
-select {
     width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
 
-input:focus, select:focus {
+    padding: 10px;
+
+    border-radius: 6px;
+
+    border: 1px solid #ccc;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+
+    box-sizing: border-box;
+}
+input:focus,
+select:focus,
+textarea:focus {
     border-color: #007bff;
     box-shadow: 0 0 3px rgba(0, 123, 255, 0.4);
     outline: none;
+}
+
+.paginacao span {
+    font-weight: 600;
+    color: #2c3e50;
 }
 
 button, input[type="submit"] {
@@ -221,3 +236,89 @@ button:hover, input[type="submit"]:hover {
     .acoes a:hover {
       background-color: #0056b3;
     }
+
+    /* ====== PAGINAÇÃO ====== */
+
+.paginacao {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 20px;
+
+    flex-wrap: wrap;
+}
+
+.paginacao button {
+
+    background-color: #007bff;
+
+    color: white;
+
+    border: none;
+
+    padding: 8px 14px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s;
+}
+
+.paginacao button:hover {
+
+    background-color: #0056b3;
+}
+
+.paginacao button:disabled {
+
+    background-color: #b0b0b0;
+
+    cursor: not-allowed;
+}
+
+.paginacao span {
+
+    font-weight: 600;
+
+    color: #2c3e50;
+}
+
+.paginacao select {
+
+    width: auto;
+
+    padding: 6px 10px;
+
+    border-radius: 6px;
+
+    border: 1px solid #ccc;
+}
+
+.topo-tabela {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-bottom: 15px;
+}
+
+.paginacao input[type="number"] {
+
+    width: 70px;
+
+    text-align: center;
+
+    padding: 6px;
+
+    border-radius: 6px;
+
+    border: 1px solid #ccc;
+}
