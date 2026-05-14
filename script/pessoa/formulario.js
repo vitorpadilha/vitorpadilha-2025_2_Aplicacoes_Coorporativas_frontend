@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             { titulo: 'CPF', dado: 'cpf', tipo: 'cpf', obrigatorio: true },
             { titulo: 'Data Nascimento', dado: 'dataNascimento', tipo: 'data', obrigatorio: true },
             { titulo: 'E-mail', dado: 'email', tipo: 'email', obrigatorio: true },
+            { titulo: 'Idade', dado: 'idade', tipo: 'numero', obrigatorio: true, casasDecimais: "0.01" },
             { titulo: 'Tipo Pessoa', dado: 'tipoPessoa', dadoExibicao: 'tipoPessoa.nome', urlConsulta: 'http://localhost:8080/tipos_pessoas', tipo: 'relacionamento', obrigatorio: true },
             
         ],
