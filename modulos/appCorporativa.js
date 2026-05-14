@@ -804,7 +804,7 @@ const appCorporativa = {
             parametros.campos.forEach(col => {
                 const valor = form.querySelector(`[name='${col.dado}']`).value;
                 if(col.tipo === "numero" && valor !== "") {
-                    obj[col.dado] = parseFloat(valor);
+                    obj[col.dado] = parseFloat(valor.replace(",", "."));
                 }
                 else if(col.tipo === "ano" && valor !== "") {
                     obj[col.dado] = parseInt(valor);
