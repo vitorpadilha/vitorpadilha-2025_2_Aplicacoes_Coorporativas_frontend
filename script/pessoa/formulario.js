@@ -7,12 +7,14 @@ document.addEventListener("DOMContentLoaded", async function() {
             { titulo: 'CPF', dado: 'cpf', tipo: 'cpf', obrigatorio: true },
             { titulo: 'Data Nascimento', dado: 'dataNascimento', tipo: 'data', obrigatorio: true },
             { titulo: 'E-mail', dado: 'email', tipo: 'email', obrigatorio: true },
+            { titulo: 'Tipo Pessoa', dado: 'tipoPessoa', dadoExibicao: 'tipoPessoa.nome', urlConsulta: 'http://localhost:8080/tipos_pessoas', tipo: 'relacionamento', obrigatorio: true },
+            
         ],
         idObjeto: 'id',
         urlCadastrar: 'http://localhost:8080/pessoas',
         urlEditar: 'http://localhost:8080/pessoas',
         urlCargaDados: 'http://localhost:8080/pessoas/',
-        token: localStorage.getItem("tokenAppCorporativa"),
+        //token: localStorage.getItem("tokenAppCorporativa"),
         urlVoltar: 'http://127.0.0.1:5500/public/pessoa/tabela.html'
     };
     await appCorporativa.criarFormulario(

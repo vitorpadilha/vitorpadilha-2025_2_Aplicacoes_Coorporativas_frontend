@@ -572,7 +572,10 @@ const appCorporativa = {
                         headers["Authorization"] = "Bearer " + parametros.token;
                     }
                     const resp = await fetch(col.urlConsulta, { headers: headers });
-                    const dados = await resp.json();
+                    let dados = await resp.json();
+                    if(dados && dados.content) {
+                        dados = dados.content;
+                    }
                     dados.forEach(op => {
                         const opt = document.createElement("option");
                         const idRel = JSON.stringify(op);
@@ -581,11 +584,12 @@ const appCorporativa = {
                         opt.textContent = op[nomeRel[1]];
                         input.appendChild(opt);
                     });
+                    
                 } catch (e) {
                     console.error("Erro ao carregar relacionamento:", e);
                 }
             }
-            if (col.tipo === "selecao") {
+            else if (col.tipo === "selecao") {
                 input = document.createElement("select");
                 input.name = col.dado;
                 input.id = col.dado;

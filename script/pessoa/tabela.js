@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", async function() {
         urlNovoCadastro: 'formulario.html',
         urlRemover: 'http://localhost:8080/pessoas',
         urlEditar: 'formulario.html?id=',
-        tamanhoPagina: 2,
-        token: localStorage.getItem("tokenAppCorporativa")
+        tamanhoPagina: 10,
+        //token: localStorage.getItem("tokenAppCorporativa")
     };
     await appCorporativa.criarTabela(
         parametros
