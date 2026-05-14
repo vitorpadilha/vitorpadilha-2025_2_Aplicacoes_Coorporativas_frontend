@@ -176,7 +176,7 @@ const appCorporativa = {
             // SPRING PAGEABLE
             // -----------------------------------
 
-            const dados = retorno.content || [];
+            const dados = retorno.content ? retorno.content: ( retorno || []);
 
             dados.forEach(item => {
 
