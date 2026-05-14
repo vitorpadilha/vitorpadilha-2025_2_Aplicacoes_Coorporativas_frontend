@@ -634,6 +634,7 @@ const appCorporativa = {
                 switch (col.tipo) {
                     case "numero":
                         input.type = "number";
+                        col.tipo? input.step = col.casasDecimais:''; 
                         break;
                     case "textoCurto":
                         input.type = "text";
