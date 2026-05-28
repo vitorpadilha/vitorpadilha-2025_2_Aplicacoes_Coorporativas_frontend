@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", async function() {
             { titulo: 'Ano de Publicação', dado: 'anoPublicacao', tipo: 'ano', obrigatorio: true },
         ],
         idObjeto: 'id',
-        urlCadastrar: 'http://localhost:8080/AppCorporativaMavenWeb/livros',
-        urlEditar: 'http://localhost:8080/AppCorporativaMavenWeb/livros',
-        urlCargaDados: 'http://localhost:8080/AppCorporativaMavenWeb/livros/id=',
+        urlCadastrar: 'http://localhost:8080/livros',
+        urlEditar: 'http://localhost:8080/livros',
+        urlCargaDados: 'http://localhost:8080/livros/id=',
         token: localStorage.getItem("tokenAppCorporativa"),
     };
     await appCorporativa.criarFormulario(

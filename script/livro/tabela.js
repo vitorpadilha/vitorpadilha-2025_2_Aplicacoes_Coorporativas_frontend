@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function() {
     let parametros = {
         idTabela: 'tabelaLivro',
-        url: 'http://localhost:8080/AppCorporativaMavenWeb/livros',
+        url: 'http://localhost:8080/livros',
         colunas: [
             { titulo: 'ID', dado: 'id' },
             { titulo: 'Título', dado: 'titulo' },
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         exibeEditar: true,
         idEnvio: 'id',
         exibeRemover: true,
-        urlRemover: 'http://localhost:8080/AppCorporativaMavenWeb/livros',
+        urlRemover: 'http://localhost:8080/livros',
         urlEditar: 'formulario.html?id=',
         token: localStorage.getItem("tokenAppCorporativa")
     };

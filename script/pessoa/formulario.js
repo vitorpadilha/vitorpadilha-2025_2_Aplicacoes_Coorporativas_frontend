@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         urlCadastrar: 'http://localhost:8080/pessoas',
         urlEditar: 'http://localhost:8080/pessoas',
         urlCargaDados: 'http://localhost:8080/pessoas/',
-        //token: localStorage.getItem("tokenAppCorporativa"),
+        token: localStorage.getItem("tokenAppCorporativa"),
         urlVoltar: 'http://127.0.0.1:5500/public/pessoa/tabela.html'
     };
     await appCorporativa.criarFormulario(

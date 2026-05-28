@@ -1,4 +1,33 @@
 const appCorporativa = {
+    urlNaoAutorizado: "http://localhost:5501/public/login.html",
+    tratarNaoAutorizado(resposta) {
+
+        if (resposta.status === 401) {
+
+            window.location.href =
+                appCorporativa.urlNaoAutorizado;
+
+            return true;
+        }
+
+        return false;
+    },
+
+    async fetchComAutenticacao(url, configuracao = {}) {
+
+        const resposta =
+            await fetch(url, configuracao);
+
+        if (resposta.status === 401) {
+
+            window.location.href =
+                appCorporativa.urlNaoAutorizado;
+
+            throw new Error("Usuário não autorizado");
+        }
+
+        return resposta;
+    },
     // -----------------------------------------
     // FUNÇÃO: criarTabela()
     // -----------------------------------------
@@ -161,7 +190,7 @@ const appCorporativa = {
                     "Bearer " + parametros.token;
             }
 
-            const resposta = await fetch(url, {
+            const resposta = await appCorporativa.fetchComAutenticacao(url, {
                 method: "GET",
                 mode: "cors",
                 headers: headers
@@ -242,7 +271,7 @@ const appCorporativa = {
 
                             if (confirm("Deseja remover?")) {
 
-                                const resp = await fetch(
+                                const resp = await appCorporativa.fetchComAutenticacao(
                                     parametros.urlRemover + "/" + idItem,
                                     {
                                         method: "DELETE",
@@ -571,7 +600,7 @@ const appCorporativa = {
                     if (parametros.token) {
                         headers["Authorization"] = "Bearer " + parametros.token;
                     }
-                    const resp = await fetch(col.urlConsulta, { headers: headers });
+                    const resp = await appCorporativa.fetchComAutenticacao(col.urlConsulta, { headers: headers });
                     let dados = await resp.json();
                     if(dados && dados.content) {
                         dados = dados.content;
@@ -763,7 +792,7 @@ const appCorporativa = {
                 if (parametros.token) {
                     headers["Authorization"] = "Bearer " + parametros.token;
                 }
-                const resp = await fetch(parametros.urlCargaDados.replace("id=", "") + idEdicao, { headers: headers });
+                const resp = await appCorporativa.fetchComAutenticacao(parametros.urlCargaDados.replace("id=", "") + idEdicao, { headers: headers });
                 if (resp.ok) {
                     const dados = await resp.json();
                     console.log("Dados retornados", dados);
@@ -842,7 +871,7 @@ const appCorporativa = {
                 if (parametros.token) {
                     headers["Authorization"] = "Bearer " + parametros.token;
                 }
-                const resp = await fetch(urlEnvio, {
+                const resp = await appCorporativa.fetchComAutenticacao(urlEnvio, {
                     method: metodo,
                     headers: headers,
                     body: JSON.stringify(obj)
